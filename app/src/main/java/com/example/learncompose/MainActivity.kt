@@ -5,6 +5,7 @@ import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -21,6 +22,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
@@ -37,23 +39,30 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     contentAlignment = Alignment.Center
                 ) {
-                    LearnButton()
+//                    LearnButton()
+                    LearnImg()
                 }
             }
         }
     }
 }
 
+//@Composable
+//fun LearnButton() {
+//    val context = LocalContext.current.applicationContext
+//    val toast = Toast.makeText(context, "Success", Toast.LENGTH_SHORT).show()
+//    Column(verticalArrangement = Arrangement.Center, horizontalAlignment = Alignment.CenterHorizontally) {
+//        Button(onClick = { toast },
+//                shape = RoundedCornerShape(size = 16.dp),
+//                colors = ButtonDefaults.buttonColors(containerColor = Color.Green)
+//            ) {
+//            Text("Login")
+//        }
+//    }
+//}
+
+
 @Composable
-fun LearnButton() {
-    val context = LocalContext.current.applicationContext
-    val toast = Toast.makeText(context, "Success", Toast.LENGTH_SHORT).show()
-    Column(verticalArrangement = Arrangement.Center, horizontalAlignment = Alignment.CenterHorizontally) {
-        Button(onClick = { toast },
-                shape = RoundedCornerShape(size = 16.dp),
-                colors = ButtonDefaults.buttonColors(containerColor = Color.Green)
-            ) {
-            Text("Login")
-        }
-    }
+fun LearnImg() {
+    Image(painter = painterResource(id = R.drawable.wa_icon), contentDescription = "logo wa")
 }
