@@ -23,6 +23,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.learncompose.ui.theme.LearnComposeTheme
 
 class MainActivity : ComponentActivity() {
@@ -44,18 +45,16 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Counter() {
-    var count by remember {
-        mutableStateOf(0)
-    }
+fun Counter(myViewModel: MyViewModel = viewModel()) {
 
     Column() {
         Button(
-            onClick = { count++ }
+            onClick = { myViewModel.incrementCounter() }
         ) {
             Text("Clik Me")
         }
 
-        Text(text = "Counter value: $count")
+        Text(text = "Counter value: ${myViewModel.count}")
     }
+
 }
