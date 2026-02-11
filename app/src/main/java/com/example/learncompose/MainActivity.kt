@@ -22,7 +22,7 @@ import com.example.learncompose.ui.theme.LearnComposeTheme
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
+//        enableEdgeToEdge()
         installSplashScreen()
         setContent {
             LearnComposeTheme {
