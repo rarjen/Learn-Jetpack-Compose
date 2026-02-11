@@ -18,7 +18,7 @@ fun HomeScreen(navController: NavController) {
         Text("Home Screen", fontSize = 30.sp)
 
         Button(
-            onClick = { navController.navigate("MainScreen") }
+            onClick = { navController.popBackStack(Destinations.MainScreen.toString(), inclusive = false) }
         ) {
             Text("Go to Home Main Screen")
         }

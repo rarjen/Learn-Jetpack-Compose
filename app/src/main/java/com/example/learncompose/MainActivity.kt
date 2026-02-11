@@ -50,12 +50,12 @@ class MainActivity : ComponentActivity() {
 fun DisplayNavComponent() {
     val navController = rememberNavController()
 
-    NavHost(navController = navController, startDestination = "MainScreen") {
-        composable("MainScreen") {
+    NavHost(navController = navController, startDestination = Destinations.MainScreen.toString()) {
+        composable(Destinations.MainScreen.toString()) {
             MainScreen(navController)
         }
 
-        composable("HomeScreen") {
+        composable(Destinations.HomeScreen.toString()) {
             HomeScreen(navController)
         }
     }
@@ -71,7 +71,7 @@ fun MainScreen(navController: NavController) {
         Text(text = "Main Screen", fontSize = 30.sp)
 
         Button(
-            onClick = { navController.navigate("HomeScreen") }
+            onClick = { navController.navigate(Destinations.HomeScreen.toString()) }
         ) {
             Text(text = "Go to Home Screen")
         }
