@@ -4,9 +4,13 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
@@ -16,6 +20,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.example.learncompose.ui.theme.LearnComposeTheme
 
@@ -30,7 +35,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Greeting("Android")
+                    DisplayYouTubeVideos()
                 }
             }
         }
@@ -38,17 +43,21 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
+fun DisplayYouTubeVideos() {
+    val videoLists = listOf<YouTubeData>(
+        YouTubeData(R.drawable.card1, "Splash Screen in Jetpack Compose", "Leinto Knowledge"),
+        YouTubeData(R.drawable.card2, "Login Page in Jetpack Compose", "Leinto Knowledge"),
+        YouTubeData(R.drawable.card3, "Navigation Bottom in Jetpack Compose", "Leinto Knowledge"),
+        YouTubeData(R.drawable.card4, "Bottom Navigation in Jetpack Compose", "Leinto Knowledge")
     )
-}
 
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    LearnComposeTheme {
-        Greeting("Android")
+    LazyColumn(
+        modifier = Modifier.fillMaxHeight().padding(16.dp),
+        verticalArrangement = Arrangement.spacedBy(16.dp)
+    ) {
+        items(videoLists) {
+            video -> YouTubeUI(youtubeData = video)
+        }
     }
 }
+
